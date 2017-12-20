@@ -4,9 +4,20 @@
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
 
+    <description>
+        <![CDATA[
+        Apache Shiro provides a Subject-aware JavaServer Faces Tag Library 
+        that allows you to control your page output based on the current 
+        Subject’s state. This is quite useful for personalizing views based on 
+        the identity and authorization state of the current user viewing the 
+        web page.
+        ]]>
+    </description>
     <namespace>http://shiro.apache.org/tags</namespace>
+    <short-name>s</short-name>
 
     <tag>
+        <description>The principal tag will output the Subject’s principal (identifying attribute) or a property of that principal.</description>
         <tag-name>principal</tag-name>
         <component>
             <component-type>org.apache.shiro.web.faces.tags.PrincipalTag</component-type>
@@ -29,6 +40,13 @@
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The hasPermission tag will display its wrapped content only if the 
+            current Subject ‘has’ (implies) the specified permission. 
+            That is, the user has the specified ability.
+            ]]>
+        </description>
         <tag-name>hasPermission</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.HasPermissionTag</handler-class>
         <attribute>
@@ -39,6 +57,10 @@
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            ]]>
+        </description>
         <tag-name>hasAnyPermission</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.HasAnyPermissionTag</handler-class>
         <attribute>
@@ -49,6 +71,13 @@
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The lacksPermission tag will display its wrapped content only if the
+            current Subject DOES NOT have (imply) the specified permission. 
+            That is, the user DOES NOT have the specified ability.
+            ]]>
+        </description>
         <tag-name>lacksPermission</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.LacksPermissionTag</handler-class>
         <attribute>
@@ -59,31 +88,80 @@
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The guest tag will display its wrapped content only if the current 
+            Subject is considered a guest. A guest is any 
+            Subject that does not have an identity. That is, we don’t know who 
+            the user is because they have not logged in and they are not 
+            remembered (from Remember Me services) from a previous site visit.
+            ]]>
+        </description>
         <tag-name>guest</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.GuestTag</handler-class>
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The user tag will display its wrapped content only if the current 
+            Subject is considered a ‘user’. A ‘user’ in this context is defined 
+            as a Subject with a known identity, either from a successful 
+            authentication or from ‘RememberMe’ services. Note that this tag is 
+            semantically different from the authenticated tag, which is more 
+            restrictive than this tag.
+            ]]>
+        </description>
         <tag-name>user</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.UserTag</handler-class>
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            Displays body content only if the current user has successfully 
+            authenticated during their current session. It is more restrictive 
+            than the ‘user’ tag. It is logically opposite to the 
+            ‘notAuthenticated’ tag.
+            The authenticated tag will display its wrapped content only if the 
+            current Subject has successfully authenticated during their current 
+            session. It is a more restrictive tag than the user, which is used 
+            to guarantee identity in sensitive workflows.
+            ]]>
+        </description>
         <tag-name>authenticated</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.AuthenticatedTag</handler-class>
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            
+            ]]>
+        </description>
         <tag-name>remembered</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.RememberedTag</handler-class>
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The notAuthenticated tag will display its wrapped content if the 
+            current Subject has NOT yet successfully authenticated during the 
+            current session.
+            ]]>
+        </description>
         <tag-name>notAuthenticated</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.NotAuthenticatedTag</handler-class>
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The hasRole tag will display its wrapped content only if the current
+            Subject is assigned the specified role.
+            ]]>
+        </description>
         <tag-name>hasRole</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.HasRoleTag</handler-class>
         <attribute>
@@ -94,6 +172,12 @@
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The lacksRole tag will display its wrapped content only if the 
+            current Subject is NOT assigned the specified role.
+            ]]>
+        </description>
         <tag-name>lacksRole</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.LacksRoleTag</handler-class>
         <attribute>
@@ -104,6 +188,13 @@
     </tag>
 
     <tag>
+        <description>
+            <![CDATA[
+            The hasAnyRole tag will display its wrapped content if the current 
+            Subject is assigned any of the specified roles from a 
+            comma-delimited list of role names.
+            ]]>
+        </description>
         <tag-name>hasAnyRoles</tag-name>
         <handler-class>org.apache.shiro.web.faces.tags.HasAnyRolesTag</handler-class>
         <attribute>
