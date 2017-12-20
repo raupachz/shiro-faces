@@ -45,7 +45,7 @@ public abstract class PermissionTagHandler extends SecureTagHandler {
     }
 
     protected boolean isPermitted(String p) {
-        return getSubject() != null && getSubject().isPermitted(p);
+        return getSubject().isPermitted(p);
     }
 
     protected abstract boolean showTagBody(String p);
