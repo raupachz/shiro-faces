@@ -68,6 +68,7 @@ public class PrincipalTag extends SecureComponent {
     /*--------------------------------------------
     |               M E T H O D S               |
     ============================================*/
+    @Override
     @SuppressWarnings({"unchecked"})
     protected void doEncodeAll(FacesContext ctx) throws IOException {
         String strValue = null;

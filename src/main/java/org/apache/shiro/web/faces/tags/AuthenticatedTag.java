@@ -23,7 +23,8 @@ public class AuthenticatedTag extends AuthenticationTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean checkAuthentication() {
-        return (getSubject() != null && getSubject().isAuthenticated());
+        return getSubject().isAuthenticated();
     }
 }

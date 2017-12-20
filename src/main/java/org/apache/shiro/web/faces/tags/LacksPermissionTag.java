@@ -13,6 +13,7 @@ public class LacksPermissionTag extends PermissionTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean showTagBody(String p) {
         return !isPermitted(p);
     }

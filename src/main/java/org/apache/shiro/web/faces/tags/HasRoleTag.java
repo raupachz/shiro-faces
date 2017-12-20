@@ -15,7 +15,7 @@ public class HasRoleTag extends PermissionTagHandler {
 
     @Override
     protected boolean showTagBody(String roleName) {
-        return getSubject() != null && getSubject().hasRole(roleName);
+        return getSubject().hasRole(roleName);
     }
 
 }

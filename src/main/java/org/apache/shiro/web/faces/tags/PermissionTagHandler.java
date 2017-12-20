@@ -34,6 +34,7 @@ public abstract class PermissionTagHandler extends SecureTagHandler {
         return value;
     }
 
+    @Override
     public void apply(FaceletContext ctx, UIComponent parent)
             throws IOException, FacesException, ELException {
         String perm;

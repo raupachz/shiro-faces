@@ -14,6 +14,7 @@ public class HasPermissionTag extends PermissionTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean showTagBody(String p) {
         return isPermitted(p);
     }

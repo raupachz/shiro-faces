@@ -18,7 +18,8 @@ public class GuestTag extends AuthenticationTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean checkAuthentication() {
-        return (getSubject() == null || getSubject().getPrincipal() == null);
+        return getSubject().getPrincipal() == null;
     }
 }

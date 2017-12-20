@@ -1,8 +1,11 @@
 package org.apache.shiro.web.faces.tags;
 
+import java.util.Arrays;
+import java.util.List;
 import org.apache.shiro.subject.Subject;
 
 import javax.faces.view.facelets.TagConfig;
+import static org.apache.shiro.web.faces.utils.BooleanArrays.anyTrue;
 
 /**
  * Tag that renders the tag body only if the current user has <em>at least one</em> of the comma-delimited
@@ -18,21 +21,10 @@ public class HasAnyPermissionTag extends PermissionTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean showTagBody(String permissions) {
-        boolean hasAnyPermission = false;
-
         Subject subject = getSubject();
-
-        if (subject != null) {
-            // Iterate through permissions and check to see if the user has one of the permission
-            for (String permission : permissions.split(PERMISSIONS_DELIMETER)) {
-                if (subject.isPermitted(permission.trim())) {
-                    hasAnyPermission = true;
-                    break;
-                }
-            }
-        }
-
-        return hasAnyPermission;
+        boolean[] matches = subject.isPermitted(permissions.split(PERMISSIONS_DELIMETER));
+        return anyTrue(matches);
     }
 }

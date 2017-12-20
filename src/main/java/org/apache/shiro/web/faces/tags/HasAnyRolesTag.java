@@ -1,6 +1,9 @@
 package org.apache.shiro.web.faces.tags;
 
+import java.util.Arrays;
+import java.util.List;
 import org.apache.shiro.subject.Subject;
+import static org.apache.shiro.web.faces.utils.BooleanArrays.anyTrue;
 
 import javax.faces.view.facelets.TagConfig;
 
@@ -22,22 +25,12 @@ public class HasAnyRolesTag extends PermissionTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean showTagBody(String roleNames) {
-        boolean hasAnyRole = false;
-
         Subject subject = getSubject();
-
-        if (subject != null) {
-            // Iterate through roles and check to see if the user has one of the roles
-            for (String role : roleNames.split(ROLE_NAMES_DELIMETER)) {
-                if (subject.hasRole(role.trim())) {
-                    hasAnyRole = true;
-                    break;
-                }
-            }
-        }
-
-        return hasAnyRole;
+        List<String> roleIdentifiers = Arrays.asList(roleNames.split(ROLE_NAMES_DELIMETER));
+        boolean[] matches = subject.hasRoles(roleIdentifiers);
+        return anyTrue(matches);
     }
 
 }

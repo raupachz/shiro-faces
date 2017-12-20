@@ -21,7 +21,8 @@ public class RememberedTag extends AuthenticationTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean checkAuthentication() {
-        return (getSubject() != null && getSubject().isRemembered());
+        return getSubject().isRemembered();
     }
 }
