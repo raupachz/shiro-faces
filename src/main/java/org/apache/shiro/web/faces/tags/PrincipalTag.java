@@ -12,7 +12,6 @@ import java.lang.reflect.Modifier;
 /**
  * <p>Tag used to print out the String value of a user's default principal,
  * or a specific principal as specified by the tag's attributes.</p>
- * <p/>
  * <p> If no attributes are specified, the tag prints out the <tt>toString()</tt>
  * value of the user's default principal.  If the <tt>type</tt> attribute
  * is specified, the tag looks for a principal with the given type.  If the
