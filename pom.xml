@@ -6,30 +6,40 @@
     <packaging>jar</packaging>
     <version>2.0</version>
     <name>Apache Shiro :: JSF 2 Support</name>
+    
+    <developers>
+        <developer>
+            <name>Deluan Quintão</name>
+        </developer>
+        <developer>
+            <name>Björn Raupach</name>
+        </developer>
+    </developers>
 
     <properties>
-        <shiro.version>1.1.0</shiro.version>
-        <jdk.version>1.5</jdk.version>
+        <shiro.version>1.4.0</shiro.version>
+        <jdk.version>1.7</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>javax.faces-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-            <version>2.0.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>javax.el</groupId>
-          <artifactId>el-api</artifactId>
-          <version>1.0</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -37,24 +47,23 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.4.3</version>
+                <version>3.0.2</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -66,7 +75,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
+                <version>3.0.0</version>
                 <configuration>
                     <quiet>true</quiet>
                 </configuration>
@@ -81,22 +90,8 @@
                 </executions>
             </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav</artifactId>
-                <version>1.0-beta-2</version>
-            </extension>
-        </extensions>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>bintray-deluan-maven</id>
-            <name>deluan-maven</name>
-            <url>https://api.bintray.com/maven/deluan/maven/shiro-faces/;publish=1</url>
-        </repository>
-    </distributionManagement>
 </project>
 
 
